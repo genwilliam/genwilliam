@@ -1,9 +1,9 @@
 name: Generate Snake Animation
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # 每天 00:00 自动运行
   push:
     branches:
       - main
@@ -13,12 +13,14 @@ permissions:
 
 jobs:
   build:
-    name: Build Snake
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout (no persisted credentials)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false   # <- 关键：不要让 checkout 持久化 GITHUB_TOKEN 到 origin
 
       - name: Generate snake animation
         uses: Platane/snk@v3
@@ -28,14 +30,29 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - name: Push snake animation to output branch
+      - name: Debug: show git remote (for troubleshooting)
+        run: git remote -v
+
+      - name: Push dist to output branch using PAT
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}   # <- 请确保这个 secret 已经创建
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "actions@github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+
+          # 删除旧 origin（如果有），并用 PAT 重新添加 origin
+          git remote remove origin || true
+          git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
+
+          # 新建孤儿分支并提交 dist 内容
           git checkout --orphan output
           git --work-tree dist add --all
-          git --work-tree dist commit -m "Generate snake animation"
-          git push origin HEAD:output --force
+
+          # 如果没有变化就跳过 push，避免错误
+          if git --work-tree dist diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git --work-tree dist commit -m "Generate snake animation"
+            git push origin HEAD:output --force
+          fi
