@@ -9,18 +9,18 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write # 一定要有 write 权限
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout (no persisted credentials)
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false   # <- 关键：不要让 checkout 持久化 GITHUB_TOKEN 到 origin
+          persist-credentials: false # 不使用默认 GITHUB_TOKEN
 
       - name: Generate snake animation
         uses: Platane/snk@v3
@@ -30,29 +30,17 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - name: Debug: show git remote (for troubleshooting)
-        run: git remote -v
-
-      - name: Push dist to output branch using PAT
+      - name: Push to output branch
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}   # <- 请确保这个 secret 已经创建
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} # 你在 Settings → Secrets → Actions 创建的 PAT
         run: |
           set -e
+          cd dist
+          git init
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
-
-          # 删除旧 origin（如果有），并用 PAT 重新添加 origin
-          git remote remove origin || true
+          git add .
+          git commit -m "Generate snake animation"
+          git branch -M output
           git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
-
-          # 新建孤儿分支并提交 dist 内容
-          git checkout --orphan output
-          git --work-tree dist add --all
-
-          # 如果没有变化就跳过 push，避免错误
-          if git --work-tree dist diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git --work-tree dist commit -m "Generate snake animation"
-            git push origin HEAD:output --force
-          fi
+          git push -f origin output
