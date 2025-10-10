@@ -1,22 +1,31 @@
 name: Generate Snake Animation
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # 每天 00:00 UTC 自动运行
+  push:
+    branches:
+      - main
 
 permissions:
-  contents: write
+  contents: write # 👈 允许推送 output 分支
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # 🧹 清理 dist 文件夹，避免旧的 .git 或权限问题
+      - name: Clean dist folder
+        run: rm -rf dist
+
+      # 🐍 生成蛇动画
       - name: Generate snake animation
         uses: Platane/snk@v3
         with:
@@ -25,17 +34,18 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - name: Push to output branch
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # 🚫 删除可能遗留的 .git，防止 “Permission denied”
+      - name: Remove .git inside dist if exists
         run: |
-          set -e
-          cd dist
-          git init
-          git config user.name "github-actions[bot]"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "Generate snake animation"
-          git branch -M output
-          git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
-          git push -f origin output
+          if [ -d "dist/.git" ]; then
+            rm -rf dist/.git
+          fi
+
+      # 🚀 推送到 output 分支
+      - name: Push to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
