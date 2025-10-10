@@ -2,15 +2,14 @@ name: Generate Snake Animation
 
 on:
   schedule:
-    - cron: "0 0 * * *" # 每天 UTC 0 点运行一次
-  workflow_dispatch: # 可以手动触发
+    - cron: "0 0 * * *"
+  workflow_dispatch:
   push:
     branches:
       - main
 
 permissions:
-  contents: write # ✅ 允许写入仓库内容
-  pages: write # ✅ 允许写入 GitHub Pages 分支
+  contents: read
 
 jobs:
   build:
@@ -18,13 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout 仓库
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # 保留完整 git 历史，方便 Pages 发布
 
-      # 2️⃣ 生成 Snake 动画
       - name: Generate snake animation
         uses: Platane/snk@v3
         with:
@@ -33,10 +28,14 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      # 3️⃣ 推送 dist 文件到 output 分支
       - name: Push snake animation to output branch
-        uses: crazy-max/ghaction-github-pages@v4
-        with:
-          target_branch: output # 输出分支
-          build_dir: dist # 要推送的目录
-          github_token: ${{ secrets.GITHUB_TOKEN }} # ✅ 必须在这里指定
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+          git checkout --orphan output
+          git --work-tree dist add --all
+          git --work-tree dist commit -m "Generate snake animation"
+          git push origin HEAD:output --force
