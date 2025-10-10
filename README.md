@@ -7,7 +7,7 @@ Python & JavaScript enthusiast.
 [![Gitee](https://img.shields.io/badge/Gitee-lin--shenglion-red?style=for-the-badge&logo=gitee)](https://gitee.com/lin-shenglion)
 [![Gmail](https://img.shields.io/badge/Gmail-genwillen@gmail.com-green?style=for-the-badge&logo=gmail)](mailto:genwillen@gmail.com)
 
----
+## ![snake gif](https://github.com/genwilliam/genwilliam/blob/output/github-contribution-grid-snake.svg)
 
 ## 👀 Visitor Count
 
@@ -47,15 +47,7 @@ Python & JavaScript enthusiast.
 
 ## 🏆 GitHub Trophies
 
-![Trophy](https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox)
-
----
-
-## 🐍 GitHub Contribution Snake
-
-![snake gif](https://github.com/genwilliam/genwilliam/blob/output/github-contribution-grid-snake.svg)
-
----
+## ![Trophy](https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox)
 
 ## 🚀 Highlight Projects
 
