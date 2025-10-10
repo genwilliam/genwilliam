@@ -1,43 +1,60 @@
-## Hi there 👋, I'm William
+# Hey! I am William👋
 
-### About Me
+A passionate **Go backend & Web developer**.  
+Python & JavaScript enthusiast.
 
-- 🔭 Current work: **Go backend development**, **Web projects**, and **Python scripting/tools**
-- 🌱 Learning: **AI-assisted coding**, **system design**, and **cloud development**
-- 👯 Collaboration: Go / Web / Python projects and open-source tools
-- 💬 Ask me about **Go, Python, JavaScript, HTML/CSS, and Neovim configuration**
-- 📫 Contact: [genwillen@gmail.com](mailto:genwillen@gmail.com)
-- 😄 Pronouns: He/Him
-- ⚡ Fun fact: I enjoy combining coding with music and creative experiments 🎵💻
+[GitHub](https://github.com/genwilliam) | [Gitee](https://gitee.com/lin-shenglion) | [Gmail](mailto:genwillen@gmail.com)
 
 ---
 
-### 🛠️ Tech Stack
+## Visitor Count
+
+![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=genwilliam.genwilliam)
+
+---
+
+## About Me
+
+- 🔭 I am a **Go backend & Web developer** from China
+- 🤔 I love computers, self-learning across disciplines
+- 📝 I’m currently working on personal projects and Web services
+- 🌱 I’m currently learning **microservices, cloud architecture, and AI-assisted coding**
+- 🚀 Motto: _If something seems impossible, go create it yourself._
+- 📫 How to reach me: WeChat: xxx | Bilibili: xxx | Gmail: [genwillen@gmail.com](mailto:genwillen@gmail.com)
+- 🔥 Fun fact: Swimming, League of Legends
+- 💬 Ask me about anything; I’m happy to help
+
+---
+
+## 🔧 Golang Job & Project Notes
+
+### 🛠 Tech Stack
 
 **Languages:** Go | Python | JavaScript | TypeScript | HTML | CSS  
 **Frameworks & Tools:** Gin | Echo | Fiber | Vue3 | Node.js | Docker | Git | Linux | Neovim
 
 ---
 
-### 📂 Projects
-
-- [Go Projects](https://github.com/genwilliam/go_code) – Backend development exercises and small services
-- [Python Projects](https://github.com/genwilliam/python_code) – Scripts, utilities, and automation tools
-- [Web Projects](https://github.com/genwilliam/web_code) – Frontend and full-stack web apps
-
----
-
-### 📊 GitHub Stats
+## 📊 GitHub Stats
 
 ![William's GitHub stats](https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox)  
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox)
 
 ---
 
-### 🌏 中文简介
+## 🏆 GitHub Trophies
 
-- 🔭 当前主要工作：Go 后端开发、Web 项目开发，以及 Python 脚本和工具
-- 🌱 学习方向：AI 辅助编码、系统设计、云开发
-- 👯 合作方向：Go / Web / Python 项目开发及开源工具
-- 💬 技术交流：Go / Python / JavaScript / HTML / CSS / Neovim 配置
-- 📫 联系方式：[genwillen@gmail.com](mailto:genwillen@gmail.com)
+![Trophy](https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox)
+
+---
+
+## 🗂️ Highlight Projects
+
+- [Go Projects](https://github.com/genwilliam/dnslog_for_go) – Backend development & microservices
+
+---
+
+## 🤝🏻 Connect with Me
+
+[![Gmail](https://img.shields.io/badge/Gmail-genwillen@gmail.com-red?style=flat-square&logo=gmail)](mailto:genwillen@gmail.com)  
+[![GitHub](https://img.shields.io/badge/GitHub-genwilliam-black?style=flat-square&logo=github)](https://github.com/genwilliam)
