@@ -1,37 +1,40 @@
-# Hey! I am William👋
+# Hey! I am William 👋
 
 A passionate **Go backend & Web developer**.  
 Python & JavaScript enthusiast.
 
-[GitHub](https://github.com/genwilliam) | [Gitee](https://gitee.com/lin-shenglion) | [Gmail](mailto:genwillen@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-genwilliam-black?style=for-the-badge&logo=github)](https://github.com/genwilliam)
+[![Gitee](https://img.shields.io/badge/Gitee-lin--shenglion-red?style=for-the-badge&logo=gitee)](https://gitee.com/lin-shenglion)
+[![Gmail](https://img.shields.io/badge/Gmail-genwillen@gmail.com-green?style=for-the-badge&logo=gmail)](mailto:genwillen@gmail.com)
 
 ---
 
-## Visitor Count
+## 👀 Visitor Count
 
 ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=genwilliam.genwilliam)
 
 ---
 
-## About Me
+## 💡 About Me
 
 - 🔭 I am a **Go backend & Web developer** from China
 - 🤔 I love computers, self-learning across disciplines
 - 📝 I’m currently working on personal projects and Web services
-- 🌱 I’m currently learning **microservices, cloud architecture, and AI-assisted coding**
+- 🌱 Learning **microservices, cloud architecture, and AI-assisted coding**
 - 🚀 Motto: _If something seems impossible, go create it yourself._
-- 📫 How to reach me: WeChat: xxx | Bilibili: xxx | Gmail: [genwillen@gmail.com](mailto:genwillen@gmail.com)
+- 📫 Contact: [genwillen@gmail.com](mailto:genwillen@gmail.com) | WeChat: xxx | Bilibili: xxx
 - 🔥 Fun fact: Swimming, League of Legends
-- 💬 Ask me about anything; I’m happy to help
+- 💬 Ask me anything; I’m happy to help!
 
 ---
 
-## 🔧 Golang Job & Project Notes
+## ⚙️ Tech Stack
 
-### 🛠 Tech Stack
+**Languages:**  
+`Go` · `Python` · `JavaScript` · `TypeScript` · `HTML` · `CSS`
 
-**Languages:** Go | Python | JavaScript | TypeScript | HTML | CSS  
-**Frameworks & Tools:** Gin | Echo | Fiber | Vue3 | Node.js | Docker | Git | Linux | Neovim
+**Frameworks & Tools:**  
+`Gin` · `Echo` · `Fiber` · `Vue3` · `Node.js` · `Docker` · `Git` · `Linux` · `Neovim`
 
 ---
 
@@ -48,13 +51,24 @@ Python & JavaScript enthusiast.
 
 ---
 
-## 🗂️ Highlight Projects
+## 🐍 GitHub Contribution Snake
 
-- [Go Projects](https://github.com/genwilliam/dnslog_for_go) – Backend development & microservices
+![snake gif](https://github.com/genwilliam/genwilliam/blob/output/github-contribution-grid-snake.gif)
+
+---
+
+## 🚀 Highlight Projects
+
+- [Go DNSLog](https://github.com/genwilliam/dnslog_for_go) – Backend development & microservices
 
 ---
 
 ## 🤝🏻 Connect with Me
 
-[![Gmail](https://img.shields.io/badge/Gmail-genwillen@gmail.com-red?style=flat-square&logo=gmail)](mailto:genwillen@gmail.com)  
 [![GitHub](https://img.shields.io/badge/GitHub-genwilliam-black?style=flat-square&logo=github)](https://github.com/genwilliam)
+[![Gitee](https://img.shields.io/badge/Gitee-lin--shenglion-red?style=flat-square&logo=gitee)](https://gitee.com/lin-shenglion)
+[![Gmail](https://img.shields.io/badge/Gmail-genwillen@gmail.com-green?style=flat-square&logo=gmail)](mailto:genwillen@gmail.com)
+
+---
+
+⭐️ From [genwilliam](https://github.com/genwilliam)
