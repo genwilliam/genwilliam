@@ -53,7 +53,7 @@ Python & JavaScript enthusiast.
 
 ## 🐍 GitHub Contribution Snake
 
-![snake gif](https://github.com/genwilliam/genwilliam/blob/output/github-contribution-grid-snake.gif)
+![snake gif](https://github.com/genwilliam/genwilliam/blob/output/github-contribution-grid-snake.svg)
 
 ---
 

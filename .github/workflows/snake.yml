@@ -1,26 +1,21 @@
 name: Generate Snake Animation
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # 每天 00:00 自动运行
-  push:
-    branches:
-      - main
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 permissions:
-  contents: write # 一定要有 write 权限
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false # 不使用默认 GITHUB_TOKEN
 
       - name: Generate snake animation
         uses: Platane/snk@v3
@@ -32,7 +27,7 @@ jobs:
 
       - name: Push to output branch
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }} # 你在 Settings → Secrets → Actions 创建的 PAT
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
           cd dist
