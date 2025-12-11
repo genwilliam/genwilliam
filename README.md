@@ -21,8 +21,7 @@ Python & JavaScript enthusiast.
 - 🤔 I love computers, self-learning across disciplines
 - 📝 I’m currently working on personal projects and Web services
 - 🌱 Learning **microservices, cloud architecture, and AI-assisted coding**
-- 🚀 Motto: _If something seems impossible, go create it yourself._
-- 📫 Contact: [genwillen@gmail.com](mailto:genwillen@gmail.com) | WeChat: xxx | Bilibili: xxx
+- 📫 Contact: [genwillen@gmail.com](mailto:genwillen@gmail.com)
 - 🔥 Fun fact: Swimming, League of Legends
 - 💬 Ask me anything; I’m happy to help!
 
@@ -40,14 +39,14 @@ Python & JavaScript enthusiast.
 
 ## 📊 GitHub Stats
 
-![William's GitHub stats](https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox)  
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox)
+![William's GitHub stats](assets/github-stats.png)  
+![Top Langs](assets/top-langs.png)
 
 ---
 
 ## 🏆 GitHub Trophies
 
-## ![Trophy](https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox)
+## ![Trophy](assets/trophy.png)
 
 ## 🚀 Highlight Projects
 

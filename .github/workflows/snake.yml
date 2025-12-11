@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: write # 👈 允许推送 output 分支
+  contents: write # 允许推送 output 分支
 
 jobs:
   build:
@@ -21,11 +21,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 🧹 清理 dist 文件夹，避免旧的 .git 或权限问题
+      # 清理 dist 文件夹，避免旧的 .git 或权限问题
       - name: Clean dist folder
         run: rm -rf dist
 
-      # 🐍 生成蛇动画
+      # 生成蛇动画
       - name: Generate snake animation
         uses: Platane/snk@v3
         with:
@@ -34,14 +34,14 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      # 🚫 删除可能遗留的 .git，防止 “Permission denied”
+      # 删除可能遗留的 .git，防止 “Permission denied”
       - name: Remove .git inside dist if exists
         run: |
           if [ -d "dist/.git" ]; then
             rm -rf dist/.git
           fi
 
-      # 🚀 推送到 output 分支
+      # 推送到 output 分支
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:

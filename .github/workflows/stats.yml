@@ -1,0 +1,34 @@
+name: Generate GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # 每天运行一次
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate GitHub Stats PNG
+        run: |
+          curl -o assets/github-stats.png "https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
+
+      - name: Generate Top Languages PNG
+        run: |
+          curl -o assets/top-langs.png "https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
+
+      - name: Generate Trophy PNG
+        run: |
+          curl -o assets/trophy.png "https://github-profile-trophy-src.vercel.app/?username=genwilliam&theme=gruvbox"
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/*.png
+          git commit -m "Update GitHub Stats PNG" || echo "No changes to commit"
+          git push
