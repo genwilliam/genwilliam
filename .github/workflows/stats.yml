@@ -15,9 +15,9 @@ jobs:
       - name: Generate PNG
         run: |
           mkdir -p assets
-          curl -o assets/github-stats.png "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
-          curl -o assets/top-langs.png "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
-          curl -o assets/trophy.png "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
+          curl -L -o assets/github-stats.png "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
+          curl -L -o assets/top-langs.png "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
+          curl -L -o assets/trophy.png "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
 
       - name: Upload PNG as Artifact
         uses: actions/upload-artifact@v4
