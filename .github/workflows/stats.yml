@@ -1,8 +1,5 @@
 name: Generate GitHub Stats
 
-permissions:
-  contents: write
-
 on:
   schedule:
     - cron: "0 0 * * *"
@@ -16,23 +13,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Ensure assets directory exists
-        run: mkdir -p assets
-
       - name: Generate GitHub Stats PNG
         run: |
           curl -L -o assets/github-stats.png \
-            "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
+          "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
 
       - name: Generate Top Languages PNG
         run: |
           curl -L -o assets/top-langs.png \
-            "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
+          "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
 
       - name: Generate Trophy PNG
         run: |
           curl -L -o assets/trophy.png \
-            "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
+          "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
 
       - name: Commit and Push changes
         run: |
