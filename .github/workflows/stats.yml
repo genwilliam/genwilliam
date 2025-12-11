@@ -1,8 +1,8 @@
-name: Generate GitHub Stats
+name: Update Stats PNG
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 * * * *" # 每小时
   workflow_dispatch:
 
 jobs:
@@ -10,32 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.genwilliam_generate_stats }}
+          persist-credentials: false # 必须设为 false，否则会使用 GITHUB_TOKEN 登录
+          fetch-depth: 0
 
-      - name: Generate GitHub Stats PNG
+      - name: Generate PNG
         run: |
-          curl -L -o assets/github-stats.png \
-          "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
+          echo "这里执行你的生成图片脚本"
 
-      - name: Generate Top Languages PNG
-        run: |
-          curl -L -o assets/top-langs.png \
-          "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
-
-      - name: Generate Trophy PNG
-        run: |
-          curl -L -o assets/trophy.png \
-          "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
-
-      - name: Commit and Push changes
+      - name: Commit and Push
         env:
-          TOKEN: ${{ secrets.genwilliam_generate_stats }}
+          PAT: ${{ secrets.stars_generate }} # PAT token 名字
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/*.png
-          git commit -m "Update GitHub Stats PNG" || echo "No changes to commit"
-          git push https://$TOKEN@github.com/genwilliam/genwilliam.git HEAD:main
+
+          git add .
+          git commit -m "Update stats PNG" || echo "No changes"
+
+          # 使用 PAT 推送，而不是默认 GITHUB_TOKEN
+          git push https://x-access-token:${PAT}@github.com/genwilliam/genwilliam.git
