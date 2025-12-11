@@ -39,14 +39,15 @@ Python & JavaScript enthusiast.
 
 ## 📊 GitHub Stats
 
-![William's GitHub stats](assets/github-stats.png)  
-![Top Langs](assets/top-langs.png)
+![William's GitHub stats](https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox)
 
 ---
 
 ## 🏆 GitHub Trophies
 
-## ![Trophy](assets/trophy.png)
+![Trophy](https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox)
 
 ## 🚀 Highlight Projects
 

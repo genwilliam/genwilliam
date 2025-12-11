@@ -2,7 +2,7 @@ name: Generate Stats PNG
 
 on:
   schedule:
-    - cron: "0 * * * *" # 每小时运行
+    - cron: "0 * * * *" # 每小时运行一次
   workflow_dispatch:
 
 jobs:
@@ -10,17 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install pillow requests
 
       - name: Generate PNG
         run: |
-          mkdir -p assets
-          curl -L -o assets/github-stats.png "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
-          curl -L -o assets/top-langs.png "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
-          curl -L -o assets/trophy.png "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
+          python scripts/generate_png.py
 
-      - name: Upload PNG as Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: latest-assets
-          path: assets
+      - name: Commit and Push PNG
+        env:
+          PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add assets/*.png
+          git commit -m "Update generated PNG" || echo "No changes"
+          git push https://x-access-token:${PAT}@github.com/${{ github.repository }}.git
