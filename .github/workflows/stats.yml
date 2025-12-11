@@ -29,9 +29,11 @@ jobs:
           "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
 
       - name: Commit and Push changes
+        env:
+          TOKEN: ${{ secrets.genwilliam_generate_stats }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/*.png
           git commit -m "Update GitHub Stats PNG" || echo "No changes to commit"
-          git push
+          git push https://$TOKEN@github.com/genwilliam/genwilliam.git HEAD:main
