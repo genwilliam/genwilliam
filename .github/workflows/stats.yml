@@ -2,8 +2,8 @@ name: Generate GitHub Stats
 
 on:
   schedule:
-    - cron: "0 0 * * *" # 每天运行一次
-  workflow_dispatch: # 允许手动触发
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -13,17 +13,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Ensure assets directory exists
+        run: mkdir -p assets
+
       - name: Generate GitHub Stats PNG
         run: |
-          curl -o assets/github-stats.png "https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
+          curl -L -o assets/github-stats.png \
+            "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
 
       - name: Generate Top Languages PNG
         run: |
-          curl -o assets/top-langs.png "https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
+          curl -L -o assets/top-langs.png \
+            "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
 
       - name: Generate Trophy PNG
         run: |
-          curl -o assets/trophy.png "https://github-profile-trophy-src.vercel.app/?username=genwilliam&theme=gruvbox"
+          curl -L -o assets/trophy.png \
+            "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
 
       - name: Commit and Push changes
         run: |
