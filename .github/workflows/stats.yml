@@ -1,8 +1,8 @@
-name: Update Stats PNG
+name: Generate Stats PNG
 
 on:
   schedule:
-    - cron: "0 * * * *" # 每小时
+    - cron: "0 * * * *" # 每小时运行
   workflow_dispatch:
 
 jobs:
@@ -11,23 +11,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: false # 必须设为 false，否则会使用 GITHUB_TOKEN 登录
-          fetch-depth: 0
 
       - name: Generate PNG
         run: |
-          echo "这里执行你的生成图片脚本"
+          mkdir -p assets
+          curl -o assets/github-stats.png "https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&theme=gruvbox"
+          curl -o assets/top-langs.png "https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact&theme=gruvbox"
+          curl -o assets/trophy.png "https://github-profile-trophy.vercel.app/?username=genwilliam&theme=gruvbox"
 
-      - name: Commit and Push
-        env:
-          PAT: ${{ secrets.stars_generate }} # PAT token 名字
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add .
-          git commit -m "Update stats PNG" || echo "No changes"
-
-          # 使用 PAT 推送，而不是默认 GITHUB_TOKEN
-          git push https://x-access-token:${PAT}@github.com/genwilliam/genwilliam.git
+      - name: Upload PNG as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: latest-assets
+          path: assets
