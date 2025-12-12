@@ -40,10 +40,18 @@ jobs:
           THEME: ${{ env.STATS_THEME }}
           OUTPUT_DIR: ${{ env.STATS_OUTPUT_DIR }}
 
-      - name: Convert SVG to PNG (to keep legacy links working)
+      - name: Prepare assets (copy + png)
         run: |
-          rsvg-convert -f png -o "$STATS_OUTPUT_DIR/github-stats.png" "$STATS_OUTPUT_DIR/3-stats.svg"
-          rsvg-convert -f png -o "$STATS_OUTPUT_DIR/top-langs.png" "$STATS_OUTPUT_DIR/2-most-commit-language.svg"
+          theme_dir="$STATS_OUTPUT_DIR/${STATS_THEME}"
+          mkdir -p "$STATS_OUTPUT_DIR"
+
+          # Copy canonical SVGs to stable names
+          cp "$theme_dir/3-stats.svg" "$STATS_OUTPUT_DIR/github-stats.svg"
+          cp "$theme_dir/2-most-commit-language.svg" "$STATS_OUTPUT_DIR/top-langs.svg"
+
+          # Convert to PNG for legacy badges/links
+          rsvg-convert -f png -o "$STATS_OUTPUT_DIR/github-stats.png" "$theme_dir/3-stats.svg"
+          rsvg-convert -f png -o "$STATS_OUTPUT_DIR/top-langs.png" "$theme_dir/2-most-commit-language.svg"
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
