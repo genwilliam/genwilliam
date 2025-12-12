@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pillow requests
+          pip install requests cairosvg
 
       - name: Generate PNG
         run: |
