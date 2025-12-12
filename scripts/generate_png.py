@@ -21,11 +21,18 @@ def fetch_svg(url: str, retries: int = 5, delay: float = 2.5) -> bytes:
             resp.raise_for_status()
             return resp.content
         except requests.HTTPError as exc:
-            status = exc.response.status_code if exc.response else "unknown"
-            if attempt == retries or status < 500:
+            status_code = (
+                exc.response.status_code
+                if exc.response and exc.response.status_code is not None
+                else 0
+            )
+            is_server_error = 500 <= status_code < 600
+            if attempt == retries or not is_server_error:
                 raise
             wait = delay * attempt
-            print(f"[WARN] {status} on {url}, retry {attempt}/{retries} after {wait}s")
+            print(
+                f"[WARN] {status_code} on {url}, retry {attempt}/{retries} after {wait}s"
+            )
             time.sleep(wait)
     raise RuntimeError("Unreachable fetch_svg loop")
 
