@@ -32,20 +32,36 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends librsvg2-bin
 
-      - name: Fetch SVG assets
+      - name: Fetch SVG assets (with backoff)
         run: |
           mkdir -p "$STATS_OUTPUT_DIR"
           base_stats="https://github-readme-stats.vercel.app"
           base_trophy="https://github-profile-trophy.vercel.app"
-          curl -sSfL --retry 5 --retry-delay 3 \
-            "$base_stats/api?username=${STATS_USERNAME}&show_icons=true&theme=${STATS_THEME}" \
-            -o "$STATS_OUTPUT_DIR/github-stats.svg"
-          curl -sSfL --retry 5 --retry-delay 3 \
-            "$base_stats/api/top-langs/?username=${STATS_USERNAME}&layout=compact&theme=${STATS_THEME}" \
-            -o "$STATS_OUTPUT_DIR/top-langs.svg"
-          curl -sSfL --retry 5 --retry-delay 3 \
-            "$base_trophy/?username=${STATS_USERNAME}&theme=${TROPHY_THEME}" \
-            -o "$STATS_OUTPUT_DIR/trophy.svg"
+
+          fetch_with_retry() {
+            local url="$1"
+            local out="$2"
+            local max_attempts=10
+            local delay=3
+
+            for attempt in $(seq 1 $max_attempts); do
+              echo "Fetching (${attempt}/${max_attempts}): $url"
+              if curl -sSfL "$url" -o "$out"; then
+                return 0
+              fi
+              sleep "$delay"
+              delay=$((delay + 2))
+            done
+            echo "Failed to fetch after ${max_attempts} attempts: $url"
+            return 1
+          }
+
+          fetch_with_retry "$base_stats/api?username=${STATS_USERNAME}&show_icons=true&theme=${STATS_THEME}" \
+            "$STATS_OUTPUT_DIR/github-stats.svg"
+          fetch_with_retry "$base_stats/api/top-langs/?username=${STATS_USERNAME}&layout=compact&theme=${STATS_THEME}" \
+            "$STATS_OUTPUT_DIR/top-langs.svg"
+          fetch_with_retry "$base_trophy/?username=${STATS_USERNAME}&theme=${TROPHY_THEME}" \
+            "$STATS_OUTPUT_DIR/trophy.svg"
 
       - name: Convert SVG to PNG
         run: |
