@@ -12,7 +12,6 @@ env:
   STATS_OUTPUT_DIR: dist # 与 snake.yml 保持一致，推送到 output 分支
   STATS_USERNAME: genwilliam
   STATS_THEME: gruvbox
-  TROPHY_THEME: gruvbox
 
 jobs:
   build:
@@ -32,42 +31,19 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends librsvg2-bin
 
-      - name: Fetch SVG assets (with backoff)
+      - name: Generate summary cards (no external API host)
+        uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: ${{ env.STATS_USERNAME }}
+          THEME: ${{ env.STATS_THEME }}
+          OUTPUT_DIR: ${{ env.STATS_OUTPUT_DIR }}
+
+      - name: Convert SVG to PNG (to keep legacy links working)
         run: |
-          mkdir -p "$STATS_OUTPUT_DIR"
-          base_stats="https://github-readme-stats.vercel.app"
-          base_trophy="https://github-profile-trophy.vercel.app"
-
-          fetch_with_retry() {
-            local url="$1"
-            local out="$2"
-            local max_attempts=10
-            local delay=3
-
-            for attempt in $(seq 1 $max_attempts); do
-              echo "Fetching (${attempt}/${max_attempts}): $url"
-              if curl -sSfL "$url" -o "$out"; then
-                return 0
-              fi
-              sleep "$delay"
-              delay=$((delay + 2))
-            done
-            echo "Failed to fetch after ${max_attempts} attempts: $url"
-            return 1
-          }
-
-          fetch_with_retry "$base_stats/api?username=${STATS_USERNAME}&show_icons=true&theme=${STATS_THEME}" \
-            "$STATS_OUTPUT_DIR/github-stats.svg"
-          fetch_with_retry "$base_stats/api/top-langs/?username=${STATS_USERNAME}&layout=compact&theme=${STATS_THEME}" \
-            "$STATS_OUTPUT_DIR/top-langs.svg"
-          fetch_with_retry "$base_trophy/?username=${STATS_USERNAME}&theme=${TROPHY_THEME}" \
-            "$STATS_OUTPUT_DIR/trophy.svg"
-
-      - name: Convert SVG to PNG
-        run: |
-          for name in github-stats top-langs trophy; do
-            rsvg-convert -f png -o "$STATS_OUTPUT_DIR/${name}.png" "$STATS_OUTPUT_DIR/${name}.svg"
-          done
+          rsvg-convert -f png -o "$STATS_OUTPUT_DIR/github-stats.png" "$STATS_OUTPUT_DIR/3-stats.svg"
+          rsvg-convert -f png -o "$STATS_OUTPUT_DIR/top-langs.png" "$STATS_OUTPUT_DIR/2-most-commit-language.svg"
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
