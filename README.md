@@ -1,9 +1,10 @@
 # 👋 Hi, I'm William
 
-A software engineer focused on **Go backend development**, with solid experience in  
-**Python** and **modern frontend technologies (JavaScript / Vue)**.
+A backend-focused software engineer specializing in **Go**,  
+with solid experience in **Python** and **modern frontend development (JavaScript / Vue)**.
 
-I enjoy building **reliable services**, clean system designs, and practical developer tools.
+I focus on **performance, reliability, and clean system design**,  
+and enjoy building practical tools and long-term maintainable systems.
 
 ---
 
@@ -17,12 +18,12 @@ I enjoy building **reliable services**, clean system designs, and practical deve
 
 ## 👨‍💻 About Me
 
-- Backend engineer specializing in **Go**
-- Strong interest in **system design, networking, and microservices**
-- Comfortable working with **Python** for tooling and backend services
-- Frontend experience with **JavaScript** and **Vue**
-- Currently exploring **cloud-native architecture** and **AI-assisted development**
-- Enjoy continuous learning and building real-world projects
+- Backend engineer with a primary focus on **Go**
+- Strong experience with **Python** for services and tooling
+- Frontend development with **JavaScript** and **Vue**
+- Interested in **networking, microservices, and system architecture**
+- Comfortable with Linux environments and developer tooling
+- Continuous learner, long-term builder
 
 ---
 
@@ -30,17 +31,26 @@ I enjoy building **reliable services**, clean system designs, and practical deve
 
 ### Backend
 
-- **Go** (Gin / Echo / Fiber)
-- **Python**
+- Go (Gin / Echo / Fiber)
+- Python
 
 ### Frontend
 
-- **JavaScript**
-- **Vue 3**
+- JavaScript
+- Vue 3
 
-### Infrastructure & Tools
+### Tools & Environment
 
 - Docker · Git · Linux · Neovim
+
+---
+
+## 🏆 Achievements
+
+> Automatically generated achievement trophies with ranked levels  
+> based on my GitHub activity and contributions.
+
+![GitHub Achievements](https://raw.githubusercontent.com/genwilliam/genwilliam/main/github-metrics.svg)
 
 ---
 
@@ -49,21 +59,6 @@ I enjoy building **reliable services**, clean system designs, and practical deve
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=genwilliam&show_icons=true&count_private=true)
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact)
-
-[![Total Stars](https://img.shields.io/badge/dynamic/json?url=https://github-readme-stats.vercel.app/api?username=genwilliam&query=$.totalStars&label=⭐%20Total%20Stars)](https://github.com/genwilliam?tab=repositories)
-
----
-
-## 🚀 Selected Projects
-
-### 🔹 Go DNSLog
-
-**Backend service for DNS logging and analysis**
-
-- Implemented in Go
-- Focused on networking and backend architecture
-
-👉 https://github.com/genwilliam/dnslog_for_go
 
 ---
 
@@ -80,4 +75,4 @@ I enjoy building **reliable services**, clean system designs, and practical deve
 
 ---
 
-_This profile is a work in progress, just like my journey as an engineer._
+_This profile reflects my ongoing journey as a software engineer._
