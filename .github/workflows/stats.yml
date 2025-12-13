@@ -38,10 +38,13 @@ jobs:
           user: ${{ env.STATS_USERNAME }}
           filename: github-stats.svg
           base: ""
-          output_directory: dist
-          plugin_stats: yes
-          plugin_stats_icons: yes
-          plugin_stats_theme: gruvbox
+          output_action: none
+          plugin_stars: yes
+          plugin_stars_limit: 4
+          plugin_languages: yes
+          plugin_languages_theme: gruvbox
+          plugin_languages_sections: most-used
+          plugin_languages_limit: 8
 
       # 生成 top languages
       - name: Generate top languages
@@ -51,11 +54,21 @@ jobs:
           user: ${{ env.STATS_USERNAME }}
           filename: top-langs.svg
           base: ""
-          output_directory: dist
+          output_action: none
           plugin_languages: yes
           plugin_languages_theme: gruvbox
           plugin_languages_sections: most-used
           plugin_languages_limit: 8
+
+      # 移动生成的文件到 dist 目录
+      - name: Move generated files to dist
+        run: |
+          if [ -f "metrics_renders/github-stats.svg" ]; then
+            cp metrics_renders/github-stats.svg dist/github-stats.svg
+          fi
+          if [ -f "metrics_renders/top-langs.svg" ]; then
+            cp metrics_renders/top-langs.svg dist/top-langs.svg
+          fi
 
       # 删除可能遗留的 .git，防止 "Permission denied"
       - name: Remove .git inside dist if exists
