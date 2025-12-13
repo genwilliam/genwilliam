@@ -39,9 +39,11 @@ Python & JavaScript enthusiast.
 
 ## 📊 GitHub Stats
 
-![William's GitHub stats](https://raw.githubusercontent.com/genwilliam/genwilliam/output/github-stats.svg)
+![William's GitHub stats](https://github-readme-stats.vercel.app/api?username=genwilliam&count_private=true&show_icons=true)
 
-![Top Langs](https://raw.githubusercontent.com/genwilliam/genwilliam/output/top-langs.svg)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=genwilliam&layout=compact)
+
+---
 
 ---
 

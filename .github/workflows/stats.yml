@@ -37,10 +37,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           user: ${{ env.STATS_USERNAME }}
           filename: github-stats.svg
-          base: ""
           output_action: none
-          plugin_stars: yes
-          plugin_stars_limit: 4
           plugin_languages: yes
           plugin_languages_theme: gruvbox
           plugin_languages_sections: most-used
