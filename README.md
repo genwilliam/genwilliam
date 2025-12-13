@@ -1,10 +1,10 @@
 # 👋 Hi, I'm William
 
 A backend-focused software engineer specializing in **Go**,  
-with solid experience in **Python** and **modern frontend development (JavaScript / Vue)**.
+with strong experience in **Python** and **modern frontend development (JavaScript / Vue)**.
 
-I focus on **performance, reliability, and clean system design**,  
-and enjoy building practical tools and long-term maintainable systems.
+I care about **performance, reliability, and clean system design**,  
+and enjoy building practical tools and services.
 
 ---
 
@@ -19,11 +19,11 @@ and enjoy building practical tools and long-term maintainable systems.
 ## 👨‍💻 About Me
 
 - Backend engineer with a primary focus on **Go**
-- Strong experience with **Python** for services and tooling
-- Frontend development with **JavaScript** and **Vue**
+- Experience building services with **Python**
+- Frontend development using **JavaScript** and **Vue**
 - Interested in **networking, microservices, and system architecture**
-- Comfortable with Linux environments and developer tooling
-- Continuous learner, long-term builder
+- Comfortable working in Linux-based environments
+- Always learning, always building
 
 ---
 
@@ -45,12 +45,18 @@ and enjoy building practical tools and long-term maintainable systems.
 
 ---
 
-## 🏆 Achievements
+## 🏆 Highlights & Achievements
 
-> Automatically generated achievement trophies with ranked levels  
-> based on my GitHub activity and contributions.
+> A quick overview of my GitHub activity and consistency.
 
-![GitHub Achievements](https://raw.githubusercontent.com/genwilliam/genwilliam/main/github-metrics.svg)
+- ⭐ **Total Stars Earned across repositories**
+- 📦 **Multiple public repositories**, actively maintained
+- 🔁 **Consistent commits** over time
+- 🧠 Strong focus on backend-oriented projects
+
+[![Total Stars](https://img.shields.io/badge/dynamic/json?url=https://github-readme-stats.vercel.app/api?username=genwilliam&query=$.totalStars&label=⭐%20Total%20Stars)](https://github.com/genwilliam?tab=repositories)
+![Repos](https://img.shields.io/github/repos/genwilliam?label=Public%20Repos)
+![Followers](https://img.shields.io/github/followers/genwilliam?label=Followers)
 
 ---
 
